@@ -1,36 +1,13 @@
-<!DOCTYPE html>
-<html>
- <head>
-        <title>Anime Blogs</title>
-    </head>
-<body>
-    <header>
-            <h1><a href="/">Anime World</a></h1>
-        </header>
+{% extends 'blog/base.html' %}
 
+{% block content %}
     {% for post in posts %}
-    <article>
-        <time>published: {{ post.published_date }}</time>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </article>
+        <article class="post">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+           <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>
     {% endfor %}
-
-<!--        {% for post in posts %}-->
-<!--        <article>-->
-<!--            <time>published: 14.06.2014, 12:14</time>-->
-<!--            <h2><a href="">One Piece</a></h2>-->
-<!--            <p>Those who hvent seen this amazing masterpiece yet hav to watch it asap !!! We are living in the era in which oda is in anything can happen anytime... this era might come to an end just like arcs in one piece</p>-->
-<!--        </article>-->
-<!--        {% endfor %}-->
-
-<!--        {% for post in posts %}-->
-<!--        <article>-->
-<!--            <time>published: 14.06.2014, 12:14</time>-->
-<!--            <h2><a href="">Violet Evergarden</a></h2>-->
-<!--            <p>This wonderful materpiece is one which made me feel like ye i have to learn this art this style im in LOVEEEE with their animation!!!</p>-->
-<!--        </article>-->
-<!--        {% endfor %}-->
-
-</body>
-</html>
+{% endblock %}
